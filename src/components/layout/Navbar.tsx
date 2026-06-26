@@ -4,6 +4,7 @@ import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { HiOutlineDocumentArrowDown } from 'react-icons/hi2';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import { navLinks, profile, resumeFile } from '../../data/portfolio';
+import { LogoMark } from '../ui/LogoMark';
 
 const sectionIds = navLinks.map((l) => l.id);
 
@@ -30,10 +31,11 @@ export function Navbar() {
             onClick={() => handleNav('home')}
             data-cursor="hover"
             aria-label="Home"
-            className="group flex items-center"
+            className="group flex items-center gap-2.5"
           >
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-tr from-accent to-accent-glow font-display text-[0.8rem] font-bold tracking-tight text-ink-900 shadow-glow ring-1 ring-white/15 transition-transform duration-300 group-hover:scale-105">
-              NPS
+            <LogoMark className="h-9 w-auto drop-shadow-[0_0_10px_rgba(124,92,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
+            <span className="hidden font-display text-lg font-bold leading-none tracking-tight text-strong sm:block">
+              Pavan <span className="text-gradient">Sandeep</span>
             </span>
           </button>
 
