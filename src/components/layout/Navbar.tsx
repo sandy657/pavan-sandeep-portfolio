@@ -29,10 +29,12 @@ export function Navbar() {
           <button
             onClick={() => handleNav('home')}
             data-cursor="hover"
-            className="font-display text-lg font-bold tracking-tight text-strong"
+            aria-label="Home"
+            className="group flex items-center"
           >
-            <span className="text-gradient">{profile.firstName}</span>
-            <span className="text-strong">.</span>
+            <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-tr from-accent to-accent-glow font-display text-[0.8rem] font-bold tracking-tight text-ink-900 shadow-glow ring-1 ring-white/15 transition-transform duration-300 group-hover:scale-105">
+              NPS
+            </span>
           </button>
 
           {/* Desktop links */}
