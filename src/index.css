@@ -30,28 +30,28 @@
     color-scheme: dark;
   }
 
-  /* Light theme — crisp white cards on a soft tinted canvas. */
+  /* Light theme — bright, airy lavender-white canvas with soft violet accents. */
   .light {
-    --surface: 237 240 248; /* #edf0f8 soft cool grey */
+    --surface: 246 247 255; /* #f6f7ff bright lavender-white */
     --surface-2: 255 255 255;
-    --text-strong: 15 23 42; /* slate-900 */
-    --text-base: 51 65 85; /* slate-700 */
-    --text-muted: 71 85 105; /* slate-600 */
-    --text-faint: 100 116 139; /* slate-500 */
-    --line: 15 23 42; /* dark borders, low alpha */
-    --card: 30 41 59; /* slate-800 tint so fills read on white */
-    --grid: 30 41 59;
-    --glass-bg: rgba(255, 255, 255, 0.9); /* near-solid white cards */
-    --glass-border: rgba(15, 23, 42, 0.1);
-    --chip-bg: rgba(15, 23, 42, 0.04);
-    --shadow-card: 0 18px 45px -22px rgba(30, 41, 59, 0.35);
-    /* Deeper gradient stops for contrast on white */
-    --grad-from: #7c3aed;
+    --text-strong: 17 24 39; /* near slate-900, stays readable */
+    --text-base: 55 65 81; /* slate-700 */
+    --text-muted: 100 116 139; /* slate-500 */
+    --text-faint: 148 163 184; /* slate-400 */
+    --line: 124 92 255; /* soft violet borders, used with low alpha */
+    --card: 124 92 255; /* violet tint so fills are light & airy */
+    --grid: 124 92 255; /* faint lavender grid */
+    --glass-bg: rgba(255, 255, 255, 0.82); /* light frosted white cards */
+    --glass-border: rgba(124, 92, 255, 0.18);
+    --chip-bg: rgba(124, 92, 255, 0.07);
+    --shadow-card: 0 20px 50px -20px rgba(124, 92, 255, 0.3); /* soft violet glow */
+    /* Gradient stops — vivid but readable on white */
+    --grad-from: #8b5cf6;
     --grad-via: #6d28d9;
-    --grad-to: #0891b2;
-    --sh-1: #7c3aed;
+    --grad-to: #0ea5e9;
+    --sh-1: #8b5cf6;
     --sh-2: #0891b2;
-    --sh-3: #db2777;
+    --sh-3: #ec4899;
     color-scheme: light;
   }
 
