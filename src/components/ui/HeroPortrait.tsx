@@ -1,16 +1,10 @@
 import { motion } from 'framer-motion';
 import { profileImage } from '../../data/portfolio';
 
-const badges = [
-  { label: 'React', className: '-left-4 top-10 sm:-left-8' },
-  { label: 'TypeScript', className: '-right-4 top-1/3 sm:-right-10' },
-  { label: 'GenAI', className: 'bottom-12 -left-2 sm:-left-6' },
-];
-
 /**
- * The hero portrait: a background-removed photo inside a violet/cyan oval
- * frame, wrapped by a rotating gradient ring, an outer glow and floating
- * tech badges — styled to match the site's accent theme.
+ * The hero portrait: a background-removed photo inside a circular violet/cyan
+ * frame, with a soft outer glow, a faint static ring and a single glowing dot
+ * orbiting the circle — styled to match the site's accent theme.
  */
 export function HeroPortrait() {
   return (
@@ -18,34 +12,27 @@ export function HeroPortrait() {
       initial={{ opacity: 0, scale: 0.85 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-      className="relative mx-auto w-full max-w-[15rem] sm:max-w-[17rem]"
+      className="relative mx-auto w-full max-w-[16rem] sm:max-w-[18rem]"
     >
       {/* Outer ambient glow */}
       <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-accent/40 via-accent-soft/20 to-accent-glow/40 blur-3xl" />
 
-      {/* Rotating accent ring */}
-      <motion.div
-        aria-hidden
-        className="absolute -inset-3 rounded-full border-2 border-transparent"
-        style={{
-          borderTopColor: 'rgb(34 211 238)',
-          borderRightColor: 'rgb(124 92 255)',
-        }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-      />
-      {/* Counter-rotating thinner ring */}
-      <motion.div
-        aria-hidden
-        className="absolute -inset-1 rounded-full border border-transparent"
-        style={{ borderBottomColor: 'rgba(167,139,255,0.7)' }}
-        animate={{ rotate: -360 }}
-        transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-      />
+      {/* Faint static outer ring */}
+      <div className="absolute -inset-4 rounded-full border border-accent/20" />
 
-      {/* Gradient-bordered oval holding the photo */}
+      {/* Single glowing dot orbiting the circle */}
       <motion.div
-        animate={{ y: [0, -12, 0] }}
+        aria-hidden
+        className="absolute -inset-4 rounded-full"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+      >
+        <span className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-accent-glow shadow-glow" />
+      </motion.div>
+
+      {/* Gradient-bordered circle holding the photo */}
+      <motion.div
+        animate={{ y: [0, -10, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         className="relative rounded-full bg-gradient-to-tr from-accent via-accent-soft to-accent-glow p-[3px] shadow-glow"
       >
@@ -62,23 +49,6 @@ export function HeroPortrait() {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-black/30 to-transparent" />
         </div>
       </motion.div>
-
-      {/* Floating tech badges */}
-      {badges.map((b, i) => (
-        <motion.span
-          key={b.label}
-          className={`absolute z-10 select-none rounded-full border border-line/15 bg-surface/70 px-3 py-1.5 font-display text-xs font-medium text-strong shadow-card backdrop-blur ${b.className}`}
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
-          transition={{
-            opacity: { delay: 0.8 + i * 0.2, duration: 0.5 },
-            scale: { delay: 0.8 + i * 0.2, duration: 0.5 },
-            y: { duration: 4 + i, repeat: Infinity, ease: 'easeInOut' },
-          }}
-        >
-          {b.label}
-        </motion.span>
-      ))}
     </motion.div>
   );
 }
