@@ -1,0 +1,113 @@
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
+import { HiMenuAlt4, HiX } from 'react-icons/hi';
+import { useActiveSection } from '../../hooks/useActiveSection';
+import { navLinks, profile } from '../../data/portfolio';
+
+const sectionIds = navLinks.map((l) => l.id);
+
+export function Navbar() {
+  const activeId = useActiveSection(sectionIds);
+  const [open, setOpen] = useState(false);
+
+  const handleNav = (id: string) => {
+    setOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="fixed inset-x-0 top-0 z-50"
+    >
+      <nav className="container-px mt-4">
+        <div className="glass flex items-center justify-between rounded-2xl px-5 py-3 shadow-card">
+          {/* Logo */}
+          <button
+            onClick={() => handleNav('home')}
+            data-cursor="hover"
+            className="font-display text-lg font-bold tracking-tight text-white"
+          >
+            <span className="text-gradient">{profile.firstName}</span>
+            <span className="text-white">.</span>
+          </button>
+
+          {/* Desktop links */}
+          <ul className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => {
+              const active = activeId === link.id;
+              return (
+                <li key={link.id}>
+                  <button
+                    onClick={() => handleNav(link.id)}
+                    data-cursor="hover"
+                    className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                      active ? 'text-white' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    {active && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        className="absolute inset-0 -z-10 rounded-full bg-accent/20 ring-1 ring-accent/40"
+                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                      />
+                    )}
+                    {link.label}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* CTA */}
+          <a
+            href={`mailto:${profile.email}`}
+            data-cursor="hover"
+            className="hidden rounded-full bg-gradient-to-r from-accent to-accent-glow px-5 py-2 text-sm font-semibold text-ink-900 shadow-glow transition-transform hover:scale-105 md:inline-flex"
+          >
+            Let's talk
+          </a>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="text-2xl text-white md:hidden"
+            aria-label="Toggle menu"
+          >
+            {open ? <HiX /> : <HiMenuAlt4 />}
+          </button>
+        </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {open && (
+            <motion.ul
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="glass mt-2 overflow-hidden rounded-2xl md:hidden"
+            >
+              {navLinks.map((link) => (
+                <li key={link.id}>
+                  <button
+                    onClick={() => handleNav(link.id)}
+                    className={`block w-full px-6 py-3 text-left text-sm font-medium transition-colors ${
+                      activeId === link.id
+                        ? 'bg-accent/10 text-white'
+                        : 'text-slate-300 hover:bg-white/5'
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </motion.ul>
+          )}
+        </AnimatePresence>
+      </nav>
+    </motion.header>
+  );
+}
