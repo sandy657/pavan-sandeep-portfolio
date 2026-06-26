@@ -56,7 +56,7 @@ export function HeroPortrait() {
             src={profileImage}
             alt="Nidubrolu Pavan Sandeep"
             loading="eager"
-            className="relative h-full w-full object-cover object-top drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
+            className="relative h-full w-full -scale-x-100 object-cover object-top drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
           />
           {/* subtle bottom fade into the frame */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-black/30 to-transparent" />

@@ -15,13 +15,13 @@ export function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden py-28 lg:py-0"
     >
       <div className="container-px grid w-full items-center gap-14 lg:grid-cols-2 lg:gap-10">
-        {/* Portrait — first on mobile, left on desktop */}
-        <div className="order-1 lg:order-1">
+        {/* Portrait — first on mobile, right on desktop */}
+        <div className="order-1 lg:order-2">
           <HeroPortrait />
         </div>
 
-        {/* Text content */}
-        <div className="order-2 flex flex-col items-center text-center lg:order-2 lg:items-start lg:text-left">
+        {/* Text content — left on desktop */}
+        <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
