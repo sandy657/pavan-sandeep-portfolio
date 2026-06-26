@@ -26,7 +26,7 @@ export function SectionHeading({
         </span>
       </Reveal>
 
-      <h2 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl">
+      <h2 className="font-display text-4xl font-bold leading-tight text-strong sm:text-5xl">
         <AnimatedText text={title} />
       </h2>
 

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -10,6 +11,15 @@ export default {
           700: '#10131f',
           600: '#161a2b',
         },
+        // Theme-aware semantic tokens (driven by CSS variables in index.css).
+        surface: 'rgb(var(--surface) / <alpha-value>)',
+        'surface-2': 'rgb(var(--surface-2) / <alpha-value>)',
+        strong: 'rgb(var(--text-strong) / <alpha-value>)',
+        base: 'rgb(var(--text-base) / <alpha-value>)',
+        muted: 'rgb(var(--text-muted) / <alpha-value>)',
+        faint: 'rgb(var(--text-faint) / <alpha-value>)',
+        line: 'rgb(var(--line) / <alpha-value>)',
+        card: 'rgb(var(--card) / <alpha-value>)',
         accent: {
           DEFAULT: '#7c5cff',
           soft: '#a78bff',

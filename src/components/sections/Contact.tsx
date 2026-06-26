@@ -25,14 +25,14 @@ export function Contact() {
               <span className="text-accent">06</span> — Get in touch
             </span>
 
-            <h2 className="relative mt-4 font-display text-4xl font-bold text-white sm:text-6xl">
+            <h2 className="relative mt-4 font-display text-4xl font-bold text-strong sm:text-6xl">
               <AnimatedText text="Let's build something" className="justify-center" />
               <span className="mt-1 block">
                 <AnimatedText text="great together." className="justify-center text-gradient" delay={0.2} />
               </span>
             </h2>
 
-            <p className="relative mx-auto mt-6 max-w-lg text-slate-400">
+            <p className="relative mx-auto mt-6 max-w-lg text-muted">
               I'm currently open to new opportunities and collaborations. Whether you
               have a project in mind or just want to say hi, my inbox is always open.
             </p>
@@ -47,7 +47,7 @@ export function Contact() {
               </MagneticButton>
               <MagneticButton
                 href={profile.linkedin}
-                className="rounded-full border border-white/15 bg-white/[0.03] px-8 py-3.5 font-semibold text-white"
+                className="rounded-full border border-line/20 bg-card/[0.04] px-8 py-3.5 font-semibold text-strong"
               >
                 <FaLinkedinIn />
                 Connect on LinkedIn
@@ -60,10 +60,10 @@ export function Contact() {
                 const inner = (
                   <div className="glass flex h-full flex-col items-center gap-2 rounded-xl px-4 py-5 transition-colors hover:border-accent/40">
                     <Icon className="text-2xl text-accent-soft" />
-                    <span className="text-xs uppercase tracking-wider text-slate-500">
+                    <span className="text-xs uppercase tracking-wider text-faint">
                       {label}
                     </span>
-                    <span className="break-all text-sm text-slate-200">{value}</span>
+                    <span className="break-all text-sm text-base">{value}</span>
                   </div>
                 );
                 return (
@@ -98,7 +98,7 @@ export function Contact() {
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel="noreferrer"
                   data-cursor="hover"
-                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-lg text-slate-300 transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-white"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-line/10 text-lg text-base transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-strong"
                 >
                   <Icon />
                 </a>

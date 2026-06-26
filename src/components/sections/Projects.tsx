@@ -43,7 +43,7 @@ export function Projects() {
                       0{i + 1}
                     </span>
                     <div className="absolute bottom-4 left-6">
-                      <p className="font-display text-2xl font-bold text-white">
+                      <p className="font-display text-2xl font-bold text-strong">
                         {project.name}
                       </p>
                       <p className="text-sm text-white/70">{project.subtitle}</p>
@@ -55,13 +55,13 @@ export function Projects() {
                       <HiArrowUpRight /> {project.role}
                     </span>
 
-                    <p className="text-sm leading-relaxed text-slate-300">
+                    <p className="text-sm leading-relaxed text-base">
                       {project.description}
                     </p>
 
                     <ul className="mt-4 space-y-2">
                       {project.highlights.slice(0, 3).map((h) => (
-                        <li key={h} className="flex gap-2 text-sm text-slate-400">
+                        <li key={h} className="flex gap-2 text-sm text-muted">
                           <HiCheckBadge className="mt-0.5 shrink-0 text-accent-glow" />
                           <span>{h}</span>
                         </li>
@@ -72,7 +72,7 @@ export function Projects() {
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-md border border-white/5 bg-white/[0.04] px-2.5 py-1 text-xs text-slate-300"
+                          className="rounded-md border border-line/10 bg-card/[0.05] px-2.5 py-1 text-xs text-base"
                         >
                           {tech}
                         </span>

@@ -14,7 +14,7 @@ export function About() {
           <div className="space-y-5">
             {profile.summary.map((paragraph, i) => (
               <Reveal key={i} delay={i * 0.1}>
-                <p className="text-lg leading-relaxed text-slate-300">
+                <p className="text-lg leading-relaxed text-base">
                   {paragraph}
                 </p>
               </Reveal>
@@ -53,7 +53,7 @@ export function About() {
                 <div className="font-display text-4xl font-bold text-gradient">
                   {stat.value}
                 </div>
-                <div className="mt-2 text-sm text-slate-400">{stat.label}</div>
+                <div className="mt-2 text-sm text-muted">{stat.label}</div>
               </motion.div>
             ))}
           </div>

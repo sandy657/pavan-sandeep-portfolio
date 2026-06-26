@@ -43,10 +43,10 @@ export function Skills() {
                 <TiltCard className="h-full">
                   <div className="glass flex h-full flex-col gap-4 rounded-2xl p-6 shadow-card transition-colors duration-300 hover:border-accent/40">
                     <div className="flex items-center gap-3">
-                      <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-accent/30 to-accent-glow/20 text-xl text-white">
+                      <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-accent/30 to-accent-glow/20 text-xl text-strong">
                         <Icon />
                       </span>
-                      <h3 className="font-display text-lg font-semibold text-white">
+                      <h3 className="font-display text-lg font-semibold text-strong">
                         {group.category}
                       </h3>
                     </div>

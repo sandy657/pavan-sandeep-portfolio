@@ -15,13 +15,13 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-white/5 py-12">
+    <footer className="relative border-t border-line/10 py-12">
       <div className="container-px flex flex-col items-center gap-8">
         <button
           onClick={() =>
             document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })
           }
-          className="font-display text-2xl font-bold text-white"
+          className="font-display text-2xl font-bold text-strong"
         >
           <span className="text-gradient">{profile.firstName}</span> {profile.lastName}
         </button>
@@ -33,7 +33,7 @@ export function Footer() {
                 onClick={() =>
                   document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })
                 }
-                className="text-sm text-slate-400 transition-colors hover:text-accent-soft"
+                className="text-sm text-muted transition-colors hover:text-accent-soft"
               >
                 {link.label}
               </button>
@@ -52,7 +52,7 @@ export function Footer() {
                 rel="noreferrer"
                 aria-label={social.label}
                 data-cursor="hover"
-                className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-lg text-slate-300 transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-white hover:shadow-glow"
+                className="grid h-11 w-11 place-items-center rounded-full border border-line/10 bg-card/[0.04] text-lg text-base transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-strong hover:shadow-glow"
               >
                 <Icon />
               </a>
@@ -60,7 +60,7 @@ export function Footer() {
           })}
         </div>
 
-        <p className="text-center text-sm text-slate-500">
+        <p className="text-center text-sm text-faint">
           © {year} {profile.name}. Designed & built with React, TypeScript & Framer Motion.
         </p>
       </div>

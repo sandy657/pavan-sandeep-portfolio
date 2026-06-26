@@ -7,6 +7,9 @@ import type {
   Stat,
 } from '../types';
 
+/** Résumé PDF served from /public — used by the download buttons. */
+export const resumeFile = '/Nidubrolu_Pavan_Sandeep_Resume.pdf';
+
 export const navLinks: NavLink[] = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },

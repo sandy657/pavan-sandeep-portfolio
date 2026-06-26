@@ -1,8 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
+import { HiOutlineDocumentArrowDown } from 'react-icons/hi2';
 import { useActiveSection } from '../../hooks/useActiveSection';
-import { navLinks, profile } from '../../data/portfolio';
+import { navLinks, profile, resumeFile } from '../../data/portfolio';
+import { ThemeToggle } from '../ui/ThemeToggle';
 
 const sectionIds = navLinks.map((l) => l.id);
 
@@ -28,10 +30,10 @@ export function Navbar() {
           <button
             onClick={() => handleNav('home')}
             data-cursor="hover"
-            className="font-display text-lg font-bold tracking-tight text-white"
+            className="font-display text-lg font-bold tracking-tight text-strong"
           >
             <span className="text-gradient">{profile.firstName}</span>
-            <span className="text-white">.</span>
+            <span className="text-strong">.</span>
           </button>
 
           {/* Desktop links */}
@@ -44,7 +46,7 @@ export function Navbar() {
                     onClick={() => handleNav(link.id)}
                     data-cursor="hover"
                     className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                      active ? 'text-white' : 'text-slate-400 hover:text-white'
+                      active ? 'text-strong' : 'text-muted hover:text-strong'
                     }`}
                   >
                     {active && (
@@ -61,23 +63,38 @@ export function Navbar() {
             })}
           </ul>
 
-          {/* CTA */}
-          <a
-            href={`mailto:${profile.email}`}
-            data-cursor="hover"
-            className="hidden rounded-full bg-gradient-to-r from-accent to-accent-glow px-5 py-2 text-sm font-semibold text-ink-900 shadow-glow transition-transform hover:scale-105 md:inline-flex"
-          >
-            Let's talk
-          </a>
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className="text-2xl text-white md:hidden"
-            aria-label="Toggle menu"
-          >
-            {open ? <HiX /> : <HiMenuAlt4 />}
-          </button>
+            <a
+              href={resumeFile}
+              download
+              data-cursor="hover"
+              aria-label="Download résumé"
+              className="hidden items-center gap-2 rounded-full border border-line/15 bg-card/[0.04] px-4 py-2 text-sm font-medium text-strong transition-colors hover:border-accent/50 sm:inline-flex"
+            >
+              <HiOutlineDocumentArrowDown className="text-base" />
+              Résumé
+            </a>
+
+            <a
+              href={`mailto:${profile.email}`}
+              data-cursor="hover"
+              className="hidden rounded-full bg-gradient-to-r from-accent to-accent-glow px-5 py-2 text-sm font-semibold text-ink-900 shadow-glow transition-transform hover:scale-105 lg:inline-flex"
+            >
+              Let's talk
+            </a>
+
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="text-2xl text-strong md:hidden"
+              aria-label="Toggle menu"
+            >
+              {open ? <HiX /> : <HiMenuAlt4 />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
@@ -96,14 +113,23 @@ export function Navbar() {
                     onClick={() => handleNav(link.id)}
                     className={`block w-full px-6 py-3 text-left text-sm font-medium transition-colors ${
                       activeId === link.id
-                        ? 'bg-accent/10 text-white'
-                        : 'text-slate-300 hover:bg-white/5'
+                        ? 'bg-accent/10 text-strong'
+                        : 'text-base hover:bg-card/[0.05]'
                     }`}
                   >
                     {link.label}
                   </button>
                 </li>
               ))}
+              <li>
+                <a
+                  href={resumeFile}
+                  download
+                  className="flex items-center gap-2 px-6 py-3 text-sm font-medium text-accent-soft hover:bg-card/[0.05]"
+                >
+                  <HiOutlineDocumentArrowDown /> Download Résumé
+                </a>
+              </li>
             </motion.ul>
           )}
         </AnimatePresence>

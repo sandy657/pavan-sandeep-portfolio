@@ -3,12 +3,41 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  /* Dark theme (default) — RGB triplets so Tailwind's alpha modifiers work. */
+  :root,
+  .dark {
+    --surface: 5 6 10; /* #05060a page background */
+    --surface-2: 16 19 31; /* #10131f card base    */
+    --text-strong: 255 255 255;
+    --text-base: 203 213 225; /* slate-300 */
+    --text-muted: 148 163 184; /* slate-400 */
+    --text-faint: 100 116 139; /* slate-500 */
+    --line: 255 255 255; /* borders, used with low alpha */
+    --card: 255 255 255; /* translucent card tint        */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --chip-bg: rgba(255, 255, 255, 0.04);
     color-scheme: dark;
   }
 
+  /* Light theme */
+  .light {
+    --surface: 244 246 251; /* #f4f6fb */
+    --surface-2: 255 255 255;
+    --text-strong: 15 23 42; /* slate-900 */
+    --text-base: 51 65 85; /* slate-700 */
+    --text-muted: 71 85 105; /* slate-600 */
+    --text-faint: 100 116 139; /* slate-500 */
+    --line: 15 23 42; /* dark borders, low alpha */
+    --card: 255 255 255;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(15, 23, 42, 0.08);
+    --chip-bg: rgba(255, 255, 255, 0.6);
+    color-scheme: light;
+  }
+
   * {
-    @apply border-white/5;
+    @apply border-line/5;
   }
 
   html {
@@ -16,12 +45,13 @@
   }
 
   body {
-    @apply bg-ink-900 text-slate-200 font-body antialiased;
+    @apply bg-surface text-base font-body antialiased;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   ::selection {
-    @apply bg-accent/40 text-white;
+    @apply bg-accent/40 text-strong;
   }
 
   /* Custom scrollbar */
@@ -29,7 +59,7 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-ink-900;
+    @apply bg-surface;
   }
   ::-webkit-scrollbar-thumb {
     @apply bg-accent/40 rounded-full;
@@ -45,7 +75,9 @@
   }
 
   .glass {
-    @apply border border-white/10 bg-white/[0.03] backdrop-blur-xl;
+    border: 1px solid var(--glass-border);
+    background-color: var(--glass-bg);
+    @apply backdrop-blur-xl;
   }
 
   .text-gradient {
@@ -69,7 +101,9 @@
   }
 
   .chip {
-    @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-slate-300 transition-colors duration-300 hover:border-accent/50 hover:text-white;
+    border: 1px solid var(--glass-border);
+    background-color: var(--chip-bg);
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm text-base transition-colors duration-300 hover:border-accent/50 hover:text-strong;
   }
 }
 

@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { HiArrowDown, HiOutlineMail } from 'react-icons/hi';
-import { profile } from '../../data/portfolio';
+import { HiOutlineDocumentArrowDown } from 'react-icons/hi2';
+import { profile, resumeFile } from '../../data/portfolio';
 import { AnimatedText } from '../ui/AnimatedText';
 import { MagneticButton } from '../ui/MagneticButton';
 import { RotatingRoles } from '../ui/RotatingRoles';
@@ -24,7 +25,7 @@ export function Hero() {
       {floaters.map((f) => (
         <motion.span
           key={f.label}
-          className={`pointer-events-none absolute hidden select-none rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 font-display text-sm text-slate-300 backdrop-blur lg:block ${f.className}`}
+          className={`pointer-events-none absolute hidden select-none rounded-full border border-line/10 bg-card/[0.04] px-4 py-1.5 font-display text-sm text-base backdrop-blur lg:block ${f.className}`}
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1, y: [0, -14, 0] }}
           transition={{
@@ -51,7 +52,7 @@ export function Hero() {
           Available for new opportunities · {profile.location}
         </motion.div>
 
-        <h1 className="font-display text-5xl font-bold leading-[1.05] text-white sm:text-7xl lg:text-8xl">
+        <h1 className="font-display text-5xl font-bold leading-[1.05] text-strong sm:text-7xl lg:text-8xl">
           <AnimatedText text="Nidubrolu Pavan" className="justify-center" />
           <span className="mt-2 block">
             <AnimatedText
@@ -66,9 +67,9 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="mt-6 flex items-center gap-2 font-display text-xl font-medium text-slate-300 sm:text-2xl"
+          className="mt-6 flex items-center gap-2 font-display text-xl font-medium text-base sm:text-2xl"
         >
-          <span className="text-slate-500">{'>'}</span>
+          <span className="text-faint">{'>'}</span>
           <RotatingRoles roles={profile.roles} />
         </motion.div>
 
@@ -76,7 +77,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.6 }}
-          className="mt-6 max-w-xl text-balance text-base text-slate-400 sm:text-lg"
+          className="mt-6 max-w-xl text-balance text-base text-muted sm:text-lg"
         >
           {profile.tagline}
         </motion.p>
@@ -96,10 +97,18 @@ export function Hero() {
           </MagneticButton>
           <MagneticButton
             href={`mailto:${profile.email}`}
-            className="rounded-full border border-white/15 bg-white/[0.03] px-7 py-3 font-semibold text-white"
+            className="rounded-full border border-line/20 bg-card/[0.04] px-7 py-3 font-semibold text-strong"
           >
             <HiOutlineMail className="text-lg" />
             Get in touch
+          </MagneticButton>
+          <MagneticButton
+            href={resumeFile}
+            download
+            className="rounded-full border border-line/20 bg-card/[0.04] px-7 py-3 font-semibold text-strong"
+          >
+            <HiOutlineDocumentArrowDown className="text-lg" />
+            Résumé
           </MagneticButton>
         </motion.div>
 
@@ -119,7 +128,7 @@ export function Hero() {
               target="_blank"
               rel="noreferrer"
               data-cursor="hover"
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-lg text-slate-300 transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-white"
+              className="grid h-11 w-11 place-items-center rounded-full border border-line/10 text-lg text-base transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-strong"
             >
               <Icon />
             </a>
@@ -131,7 +140,7 @@ export function Hero() {
       <motion.a
         href="#about"
         aria-label="Scroll to about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-faint"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.8, repeat: Infinity }}
       >
