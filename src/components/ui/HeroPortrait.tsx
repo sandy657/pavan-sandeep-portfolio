@@ -12,7 +12,7 @@ export function HeroPortrait() {
       initial={{ opacity: 0, scale: 0.85 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-      className="relative mx-auto w-full max-w-[16rem] sm:max-w-[18rem]"
+      className="relative mx-auto w-full max-w-[18rem] sm:max-w-[20rem]"
     >
       {/* Outer ambient glow */}
       <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-accent/40 via-accent-soft/20 to-accent-glow/40 blur-3xl" />
@@ -43,7 +43,7 @@ export function HeroPortrait() {
             src={profileImage}
             alt="Nidubrolu Pavan Sandeep"
             loading="eager"
-            className="relative h-full w-full object-cover object-top drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
+            className="relative h-full w-full object-cover object-center drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
           />
           {/* subtle bottom fade into the frame */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-black/30 to-transparent" />
