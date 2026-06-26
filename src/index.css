@@ -3,9 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  /* Dark theme (default) — RGB triplets so Tailwind's alpha modifiers work. */
-  :root,
-  .dark {
+  /* Dark theme — the only theme. RGB triplets so Tailwind's alpha modifiers work. */
+  :root {
     --surface: 5 6 10; /* #05060a page background */
     --surface-2: 16 19 31; /* #10131f card base    */
     --text-strong: 255 255 255;
@@ -28,31 +27,6 @@
     --sh-2: #22d3ee;
     --sh-3: #ff7eb6;
     color-scheme: dark;
-  }
-
-  /* Light theme — bright, airy lavender-white canvas with soft violet accents. */
-  .light {
-    --surface: 246 247 255; /* #f6f7ff bright lavender-white */
-    --surface-2: 255 255 255;
-    --text-strong: 17 24 39; /* near slate-900, stays readable */
-    --text-base: 55 65 81; /* slate-700 */
-    --text-muted: 100 116 139; /* slate-500 */
-    --text-faint: 148 163 184; /* slate-400 */
-    --line: 124 92 255; /* soft violet borders, used with low alpha */
-    --card: 124 92 255; /* violet tint so fills are light & airy */
-    --grid: 124 92 255; /* faint lavender grid */
-    --glass-bg: rgba(255, 255, 255, 0.82); /* light frosted white cards */
-    --glass-border: rgba(124, 92, 255, 0.18);
-    --chip-bg: rgba(124, 92, 255, 0.07);
-    --shadow-card: 0 20px 50px -20px rgba(124, 92, 255, 0.3); /* soft violet glow */
-    /* Gradient stops — vivid but readable on white */
-    --grad-from: #8b5cf6;
-    --grad-via: #6d28d9;
-    --grad-to: #0ea5e9;
-    --sh-1: #8b5cf6;
-    --sh-2: #0891b2;
-    --sh-3: #ec4899;
-    color-scheme: light;
   }
 
   * {

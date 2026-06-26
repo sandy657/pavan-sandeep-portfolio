@@ -4,7 +4,6 @@ import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { HiOutlineDocumentArrowDown } from 'react-icons/hi2';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import { navLinks, profile, resumeFile } from '../../data/portfolio';
-import { ThemeToggle } from '../ui/ThemeToggle';
 
 const sectionIds = navLinks.map((l) => l.id);
 
@@ -65,8 +64,6 @@ export function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            <ThemeToggle />
-
             <a
               href={resumeFile}
               download
