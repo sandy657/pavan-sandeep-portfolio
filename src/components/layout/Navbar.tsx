@@ -31,12 +31,9 @@ export function Navbar() {
             onClick={() => handleNav('home')}
             data-cursor="hover"
             aria-label="Home"
-            className="group flex items-center gap-2.5"
+            className="group flex items-center"
           >
             <LogoMark className="h-9 w-auto drop-shadow-[0_0_10px_rgba(124,92,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
-            <span className="hidden font-display text-lg font-bold leading-none tracking-tight text-strong sm:block">
-              Pavan <span className="text-gradient">Sandeep</span>
-            </span>
           </button>
 
           {/* Desktop links */}
