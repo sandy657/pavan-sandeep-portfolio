@@ -11,6 +11,9 @@ import type {
  *  BASE_URL keeps the link correct whether hosted at root or a sub-path. */
 export const resumeFile = `${import.meta.env.BASE_URL}Nidubrolu_Pavan_Sandeep_Resume.pdf`;
 
+/** Background-removed hero portrait served from /public. */
+export const profileImage = `${import.meta.env.BASE_URL}profile.png`;
+
 export const navLinks: NavLink[] = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
