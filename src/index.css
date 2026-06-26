@@ -13,26 +13,45 @@
     --text-muted: 148 163 184; /* slate-400 */
     --text-faint: 100 116 139; /* slate-500 */
     --line: 255 255 255; /* borders, used with low alpha */
-    --card: 255 255 255; /* translucent card tint        */
+    --card: 255 255 255; /* card fill tint (used with low alpha) */
+    --grid: 255 255 255; /* background grid lines */
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
     --chip-bg: rgba(255, 255, 255, 0.04);
+    --shadow-card: 0 20px 60px -25px rgba(0, 0, 0, 0.8);
+    /* Gradient text stops */
+    --grad-from: #a78bff;
+    --grad-via: #7c5cff;
+    --grad-to: #22d3ee;
+    /* Shimmer stops (rotating roles) */
+    --sh-1: #a78bff;
+    --sh-2: #22d3ee;
+    --sh-3: #ff7eb6;
     color-scheme: dark;
   }
 
-  /* Light theme */
+  /* Light theme — crisp white cards on a soft tinted canvas. */
   .light {
-    --surface: 244 246 251; /* #f4f6fb */
+    --surface: 237 240 248; /* #edf0f8 soft cool grey */
     --surface-2: 255 255 255;
     --text-strong: 15 23 42; /* slate-900 */
     --text-base: 51 65 85; /* slate-700 */
     --text-muted: 71 85 105; /* slate-600 */
     --text-faint: 100 116 139; /* slate-500 */
     --line: 15 23 42; /* dark borders, low alpha */
-    --card: 255 255 255;
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(15, 23, 42, 0.08);
-    --chip-bg: rgba(255, 255, 255, 0.6);
+    --card: 30 41 59; /* slate-800 tint so fills read on white */
+    --grid: 30 41 59;
+    --glass-bg: rgba(255, 255, 255, 0.9); /* near-solid white cards */
+    --glass-border: rgba(15, 23, 42, 0.1);
+    --chip-bg: rgba(15, 23, 42, 0.04);
+    --shadow-card: 0 18px 45px -22px rgba(30, 41, 59, 0.35);
+    /* Deeper gradient stops for contrast on white */
+    --grad-from: #7c3aed;
+    --grad-via: #6d28d9;
+    --grad-to: #0891b2;
+    --sh-1: #7c3aed;
+    --sh-2: #0891b2;
+    --sh-3: #db2777;
     color-scheme: light;
   }
 
@@ -81,17 +100,25 @@
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-accent-soft via-accent to-accent-glow bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--grad-from),
+      var(--grad-via),
+      var(--grad-to)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .text-shimmer {
     background: linear-gradient(
       90deg,
-      #a78bff 0%,
-      #22d3ee 25%,
-      #ff7eb6 50%,
-      #22d3ee 75%,
-      #a78bff 100%
+      var(--sh-1) 0%,
+      var(--sh-2) 25%,
+      var(--sh-3) 50%,
+      var(--sh-2) 75%,
+      var(--sh-1) 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;

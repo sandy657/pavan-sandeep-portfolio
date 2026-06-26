@@ -33,11 +33,13 @@ export default {
       },
       boxShadow: {
         glow: '0 0 40px -10px rgba(124, 92, 255, 0.55)',
-        card: '0 20px 60px -25px rgba(0, 0, 0, 0.8)',
+        // Theme-aware card elevation (see --shadow-card in index.css).
+        card: 'var(--shadow-card)',
       },
       backgroundImage: {
+        // Grid line colour follows the theme via --grid.
         'grid-faint':
-          'linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)',
+          'linear-gradient(to right, rgb(var(--grid) / 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgb(var(--grid) / 0.05) 1px, transparent 1px)',
       },
       keyframes: {
         float: {
