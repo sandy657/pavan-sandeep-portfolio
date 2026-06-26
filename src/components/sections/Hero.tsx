@@ -53,7 +53,7 @@ export function Hero() {
         </motion.div>
 
         <h1 className="font-display text-5xl font-bold leading-[1.05] text-strong sm:text-7xl lg:text-8xl">
-          <AnimatedText text="Nidubrolu Pavan" className="justify-center" />
+          <AnimatedText text="Nidubrolu Pavan" className="justify-center text-gradient" />
           <span className="mt-2 block">
             <AnimatedText
               text="Sandeep"
