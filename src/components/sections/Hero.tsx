@@ -46,12 +46,12 @@ export function Hero() {
 
           <h1 className="mt-1 font-display text-5xl font-bold leading-[1.05] text-strong sm:text-6xl lg:text-7xl">
             <AnimatedText
-              text="Nidubrolu Pavan"
+              text="Pavan Sandeep"
               className="justify-center text-gradient lg:justify-start"
             />
             <span className="mt-2 block">
               <AnimatedText
-                text="Sandeep"
+                text="Nidubrolu"
                 delay={0.3}
                 className="justify-center text-gradient lg:justify-start"
               />
