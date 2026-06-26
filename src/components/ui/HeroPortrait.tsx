@@ -18,15 +18,15 @@ export function HeroPortrait() {
       initial={{ opacity: 0, scale: 0.85 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-      className="relative mx-auto w-full max-w-[20rem] sm:max-w-[22rem]"
+      className="relative mx-auto w-full max-w-[15rem] sm:max-w-[17rem]"
     >
       {/* Outer ambient glow */}
-      <div className="absolute -inset-6 rounded-[50%] bg-gradient-to-tr from-accent/40 via-accent-soft/20 to-accent-glow/40 blur-3xl" />
+      <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-accent/40 via-accent-soft/20 to-accent-glow/40 blur-3xl" />
 
       {/* Rotating accent ring */}
       <motion.div
         aria-hidden
-        className="absolute -inset-3 rounded-[50%] border-2 border-transparent"
+        className="absolute -inset-3 rounded-full border-2 border-transparent"
         style={{
           borderTopColor: 'rgb(34 211 238)',
           borderRightColor: 'rgb(124 92 255)',
@@ -37,7 +37,7 @@ export function HeroPortrait() {
       {/* Counter-rotating thinner ring */}
       <motion.div
         aria-hidden
-        className="absolute -inset-1 rounded-[50%] border border-transparent"
+        className="absolute -inset-1 rounded-full border border-transparent"
         style={{ borderBottomColor: 'rgba(167,139,255,0.7)' }}
         animate={{ rotate: -360 }}
         transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
@@ -47,16 +47,16 @@ export function HeroPortrait() {
       <motion.div
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="relative rounded-[50%] bg-gradient-to-tr from-accent via-accent-soft to-accent-glow p-[3px] shadow-glow"
+        className="relative rounded-full bg-gradient-to-tr from-accent via-accent-soft to-accent-glow p-[3px] shadow-glow"
       >
-        <div className="relative aspect-[4/5] overflow-hidden rounded-[50%] bg-gradient-to-b from-accent/10 to-ink-900/40">
+        <div className="relative aspect-square overflow-hidden rounded-full bg-gradient-to-b from-accent/10 to-ink-900/40">
           {/* inner violet glow behind subject */}
           <div className="absolute inset-x-0 bottom-0 top-1/4 bg-[radial-gradient(ellipse_at_bottom,_rgba(124,92,255,0.35),_transparent_70%)]" />
           <img
             src={profileImage}
             alt="Nidubrolu Pavan Sandeep"
             loading="eager"
-            className="relative h-full w-full -scale-x-100 object-cover object-top drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
+            className="relative h-full w-full object-cover object-top drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
           />
           {/* subtle bottom fade into the frame */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-black/30 to-transparent" />
