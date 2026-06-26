@@ -14,9 +14,9 @@ export function Hero() {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden py-28 lg:py-0"
     >
-      <div className="container-px grid w-full items-center gap-14 lg:grid-cols-2 lg:gap-10">
-        {/* Portrait — first on mobile, right on desktop */}
-        <div className="order-1 lg:order-2">
+      <div className="container-px grid w-full items-center gap-14 lg:grid-cols-[1.3fr_0.7fr] lg:gap-10">
+        {/* Portrait — first on mobile, right on desktop (nudged up) */}
+        <div className="order-1 -mt-2 lg:order-2 lg:-mt-14">
           <HeroPortrait />
         </div>
 
@@ -72,7 +72,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
-            className="mt-6 max-w-xl text-balance text-base text-muted sm:text-lg"
+            className="mt-6 max-w-xl text-base text-muted sm:text-lg lg:max-w-none lg:text-[0.95rem]"
           >
             {profile.tagline}
           </motion.p>
