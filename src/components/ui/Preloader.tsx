@@ -3,14 +3,20 @@ import { useEffect, useState } from 'react';
 
 const words = ['NIDUBROLU', 'PAVAN', 'SANDEEP'];
 
+// Flatten to letters with a running index so each letter can stagger.
+let letterIndex = 0;
+const lines = words.map((word) =>
+  word.split('').map((char) => ({ char, i: letterIndex++ })),
+);
+
 interface PreloaderProps {
   onComplete: () => void;
 }
 
 /**
- * Full-screen intro: the name reveals word-by-word while a counter and a
- * bottom progress bar fill from 0–100%, then the whole panel slides up to
- * unveil the portfolio.
+ * Intro screen: a "PORTFOLIO" label, the name revealing letter-by-letter in
+ * white, and a thin gradient line that fills from 0–100% — then the whole
+ * panel slides up to reveal the portfolio.
  */
 export function Preloader({ onComplete }: PreloaderProps) {
   const [count, setCount] = useState(0);
@@ -22,7 +28,6 @@ export function Preloader({ onComplete }: PreloaderProps) {
 
     const tick = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
-      // ease-out so it slows near the end
       const eased = 1 - Math.pow(1 - progress, 2);
       setCount(Math.round(eased * 100));
       if (progress < 1) {
@@ -43,63 +48,44 @@ export function Preloader({ onComplete }: PreloaderProps) {
       exit={{ y: '-100%' }}
       transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
     >
-      {/* ambient glow + grid */}
-      <div className="absolute h-80 w-80 rounded-full bg-accent/20 blur-[130px]" />
-      <div className="absolute inset-0 bg-grid-faint [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
+      {/* PORTFOLIO label */}
+      <motion.span
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="mb-5 font-display text-xs font-semibold uppercase tracking-[0.5em] text-accent-glow sm:text-sm"
+      >
+        Portfolio
+      </motion.span>
 
-      {/* Name — word-by-word reveal */}
-      <h1 className="relative flex flex-wrap items-center justify-center gap-x-5 px-6 text-center font-display text-3xl font-bold uppercase tracking-tight sm:text-6xl">
-        {words.map((word, i) => (
-          <span key={word} className="overflow-hidden pb-2">
-            <motion.span
-              className="inline-block text-gradient"
-              initial={{ y: '120%' }}
-              animate={{ y: '0%' }}
-              transition={{
-                delay: 0.2 + i * 0.16,
-                duration: 0.8,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              {word}
-            </motion.span>
+      {/* Name — letter-by-letter reveal */}
+      <h1 className="flex flex-wrap items-center justify-center gap-x-5 px-6 text-center font-display text-4xl font-bold uppercase tracking-tight text-white sm:text-7xl">
+        {lines.map((word, wi) => (
+          <span key={wi} className="flex overflow-hidden pb-2">
+            {word.map(({ char, i }) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                initial={{ y: '110%' }}
+                animate={{ y: '0%' }}
+                transition={{
+                  delay: 0.25 + i * 0.04,
+                  duration: 0.6,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </span>
         ))}
       </h1>
 
-      {/* Tagline */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
-        className="relative mt-4 font-display text-xs uppercase tracking-[0.4em] text-muted sm:text-sm"
-      >
-        Frontend Developer · UI/UX · GenAI
-      </motion.p>
-
-      {/* Big counter, bottom-right */}
-      <div className="pointer-events-none absolute bottom-6 right-6 font-display text-5xl font-bold tabular-nums text-strong/90 sm:bottom-10 sm:right-12 sm:text-7xl">
-        {count}
-        <span className="text-accent">%</span>
-      </div>
-
-      {/* Loading label, bottom-left */}
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-        className="absolute bottom-9 left-6 font-display text-xs uppercase tracking-[0.3em] text-muted sm:bottom-14 sm:left-12"
-      >
-        Loading
-      </motion.span>
-
-      {/* Full-width progress bar pinned to the bottom */}
-      <div className="absolute inset-x-0 bottom-0 h-[3px] bg-white/10">
+      {/* Thin gradient loading line */}
+      <div className="mt-8 h-[2px] w-[440px] max-w-[78vw] overflow-hidden">
         <motion.div
-          className="h-full bg-gradient-to-r from-accent-soft via-accent to-accent-glow"
-          initial={{ width: '0%' }}
-          animate={{ width: `${count}%` }}
-          transition={{ ease: 'linear', duration: 0.05 }}
+          className="h-full w-full origin-center rounded-full bg-gradient-to-r from-accent via-accent-soft to-accent-glow"
+          style={{ scaleX: count / 100 }}
         />
       </div>
     </motion.div>
