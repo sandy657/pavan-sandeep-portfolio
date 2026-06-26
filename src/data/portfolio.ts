@@ -7,8 +7,9 @@ import type {
   Stat,
 } from '../types';
 
-/** Résumé PDF served from /public — used by the download buttons. */
-export const resumeFile = '/Nidubrolu_Pavan_Sandeep_Resume.pdf';
+/** Résumé PDF served from /public — used by the download buttons.
+ *  BASE_URL keeps the link correct whether hosted at root or a sub-path. */
+export const resumeFile = `${import.meta.env.BASE_URL}Nidubrolu_Pavan_Sandeep_Resume.pdf`;
 
 export const navLinks: NavLink[] = [
   { id: 'home', label: 'Home' },
